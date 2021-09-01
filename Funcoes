@@ -1,0 +1,38 @@
+def perguntar():
+    return input("O que deseja realizar?\n" +
+                "<I> - Para inserir um usuário\n" +
+                "<P> - Para pesquisar um usuário\n" +
+                "<E> - Para excluir um usuário\n" +
+                "<L> - Para listar um usuário: ").upper()
+
+def inserir(users):
+    users[input("Digite o login: ").upper()] = [input("Digite o nome: ").upper(),
+                                                   input("Digite a última data de acesso: "),
+                                                   input("Qual a última estação acessada: ").upper()]
+
+def pesquisar(users):
+    login = input("Digite o login para buscar: ").upper()
+    nome = 0
+    for user in users:
+        if login == user:
+            nome = 1
+    # Informar situação da busca
+    if nome == 1:
+        print("Nome...............: ", str(users[login][0]))
+        print("Estação............: ", str(users[login][2]))
+        print("Data último acesso.: ", str(users[login][1]))
+        print("Login..............: ", str(user))
+    else:
+        print("Não encontrado!")
+
+def excluir(users):
+    login = input("Qual login excluir? ").upper()
+    del users[login]
+    print("REMOVIDO: ", str(users[login][0]))
+
+def listar(users):
+    for user in users:
+        print("Nome...............: ", str(users[user][0]))
+        print("Estação............: ", str(users[user][2]))
+        print("Data último acesso.: ", str(users[user][1]))
+        print("Login..............: ", str(user), "\n")
